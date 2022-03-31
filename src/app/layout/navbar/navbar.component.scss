@@ -1,0 +1,18 @@
+.navbar {
+  position: sticky;
+  top: 0px;
+  z-index: 2;
+}
+.logo {
+  height: 45px;
+}
+
+.nav-container {
+  border: 1px solid white;
+  padding: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .collapse {
+    margin-top: 20px;
+  }
+}

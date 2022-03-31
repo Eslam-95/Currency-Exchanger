@@ -1,0 +1,36 @@
+.swap-icon {
+  text-align: center;
+  margin-top: 23px;
+  font-size: x-large;
+  i {
+    cursor: pointer;
+  }
+}
+
+.sticky-converter {
+  position: sticky;
+  top: 90px;
+  z-index: 2;
+}
+@media (min-width: 641px) {
+  .right-left-arrow {
+    display: inline-block;
+  }
+  .up-down-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .up-down-arrow {
+    display: inline-block;
+  }
+  .right-left-arrow {
+    display: none;
+  }
+  .sticky-converter {
+    position: relative;
+    z-index: unset;
+    top: unset;
+  }
+}

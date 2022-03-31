@@ -1,3 +1,5 @@
+import { ChartsModule } from 'ng2-charts';
+import { SharedModule } from './shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,7 +11,14 @@ import { CurrenctDetailsComponent } from './pages/currenct-details/currenct-deta
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CurrenctDetailsComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    ChartsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

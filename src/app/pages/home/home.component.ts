@@ -7,8 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   currentPage = true;
-  mostPopularCurrencies = [{}, {}, {}, {}, {}, {}, {}, {}, {}];
+  mostPopularCurrencies: string[] = [];
+  convertedValue = 1;
+  requestedAmount = 1;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.mostPopularCurrencies);
+  }
+
+  topNineCurrencies(data: any): void {
+    this.mostPopularCurrencies.push(...[data]);
+    console.log(this.mostPopularCurrencies);
+  }
+  getConvertedValue(convertedValue: number): void {
+    this.convertedValue = convertedValue;
+    console.log(this.convertedValue);
+  }
+  getRequestedAmount(requestedValue: number): void {
+    this.requestedAmount = requestedValue;
+  }
 }

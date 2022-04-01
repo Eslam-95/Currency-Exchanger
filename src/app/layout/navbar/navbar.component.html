@@ -19,10 +19,20 @@
       id="navbarSupportedContent"
     >
       <div class="d-flex">
-        <button class="btn btn-outline-light me-2" type="button">
+        <button
+          class="btn btn-outline-light me-2"
+          type="button"
+          [routerLink]="['/details']"
+          [queryParams]="{ from: 'EUR', to: 'USD' }"
+        >
           EUR-USD Details
         </button>
-        <button class="btn btn-outline-light" type="button">
+        <button
+          class="btn btn-outline-light"
+          type="button"
+          [routerLink]="['/details']"
+          [queryParams]="{ from: 'EUR', to: 'GBP' }"
+        >
           EUR-GBP Details
         </button>
       </div>

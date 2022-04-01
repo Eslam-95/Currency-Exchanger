@@ -2,7 +2,7 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <form [formGroup]="converterForm">
+        <form [formGroup]="converterForm" (ngSubmit)="submit()">
           <div class="row">
             <div class="col-md-4">
               <label for="amount">Amount</label>
@@ -12,7 +12,17 @@
                 class="form-control text-center"
                 placeholder="Amount"
                 formControlName="amount"
+                (ngModelChange)="checkValidation()"
               />
+              <div
+                class="text-danger text-center"
+                *ngIf="
+                  converterForm.get('amount')?.invalid &&
+                  converterForm.get('amount')?.touched
+                "
+              >
+                please Enter Valid Amount
+              </div>
             </div>
             <div class="col-md-8">
               <div class="row">
@@ -24,15 +34,22 @@
                     class="form-select"
                     formControlName="from"
                   >
-                    <option value="1" selected disabled>From</option>
+                    <option
+                      [value]="symbol?.key"
+                      *ngFor="let symbol of allSymbols | keyvalue"
+                    >
+                      {{ symbol?.key }}
+                    </option>
                   </select>
                 </div>
                 <div class="col-md-2 swap-icon">
                   <i
                     class="fa-solid fa-arrow-right-arrow-left right-left-arrow"
+                    (click)="swapCurrency()"
                   ></i>
                   <i
                     class="fa-solid fa-arrow-down-up-across-line up-down-arrow"
+                    (click)="swapCurrency()"
                   ></i>
                 </div>
                 <div class="col-md-5">
@@ -43,7 +60,12 @@
                     class="form-select"
                     formControlName="to"
                   >
-                    <option value="1" selected disabled>To</option>
+                    <option
+                      [value]="symbol?.key"
+                      *ngFor="let symbol of allSymbols | keyvalue"
+                    >
+                      {{ symbol?.key }}
+                    </option>
                   </select>
                 </div>
                 <div class="col-12">
@@ -61,7 +83,7 @@
                 class="form-control text-center"
                 readonly
                 placeholder="1 Euro = XX"
-                value=""
+                [value]="oneBasedOnSelected"
               />
             </div>
             <div class="col my-2">
@@ -70,13 +92,19 @@
                 readonly
                 class="form-control p-5 text-center"
                 placeholder="XX USD"
+                [value]="result"
               />
             </div>
             <div class="col-md-4 m-auto" [ngClass]="{ hidden: !isHome }">
               <button
                 class="btn btn-primary w-100"
                 type="button"
-                [routerLink]="['/details/demo']"
+                [routerLink]="['/details']"
+                [queryParams]="{
+                  from: converterForm.controls.from.value,
+                  to: converterForm.controls.to.value,
+                  amount: converterForm.controls.amount.value
+                }"
               >
                 More Details
               </button>

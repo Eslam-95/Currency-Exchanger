@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CurrenctDetailsComponent } from './pages/currenct-details/currenct-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CurrenctDetailsComponent],
@@ -18,6 +19,7 @@ import { CurrenctDetailsComponent } from './pages/currenct-details/currenct-deta
     ReactiveFormsModule,
     SharedModule,
     ChartsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

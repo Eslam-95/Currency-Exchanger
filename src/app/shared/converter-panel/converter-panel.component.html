@@ -2,7 +2,7 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <form>
+        <form [formGroup]="converterForm">
           <div class="row">
             <div class="col-md-4">
               <label for="amount">Amount</label>
@@ -11,13 +11,19 @@
                 id="amount"
                 class="form-control text-center"
                 placeholder="Amount"
+                formControlName="amount"
               />
             </div>
             <div class="col-md-8">
               <div class="row">
                 <div class="col-md-5">
                   <label for="from">From</label>
-                  <select name="from" id="from" class="form-select">
+                  <select
+                    name="from"
+                    id="from"
+                    class="form-select"
+                    formControlName="from"
+                  >
                     <option value="1" selected disabled>From</option>
                   </select>
                 </div>
@@ -31,12 +37,19 @@
                 </div>
                 <div class="col-md-5">
                   <label for="to">To</label>
-                  <select name="to" id="to" class="form-select">
+                  <select
+                    name="to"
+                    id="to"
+                    class="form-select"
+                    formControlName="to"
+                  >
                     <option value="1" selected disabled>To</option>
                   </select>
                 </div>
                 <div class="col-12">
-                  <button class="btn btn-primary w-100 mt-3">convert</button>
+                  <button class="btn btn-primary w-100 mt-3" type="submit">
+                    convert
+                  </button>
                 </div>
               </div>
             </div>

@@ -60,8 +60,14 @@
               />
             </div>
           </div>
-          <div class="col-md-4 m-auto mt-3">
-            <button class="btn btn-primary w-100">More Details</button>
+          <div class="col-md-4 m-auto mt-3" [ngClass]="{ hidden: !isHome }">
+            <button
+              class="btn btn-primary w-100"
+              type="button"
+              [routerLink]="['/details/demo']"
+            >
+              More Details
+            </button>
           </div>
         </form>
       </div>

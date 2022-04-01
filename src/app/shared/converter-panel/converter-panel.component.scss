@@ -20,7 +20,9 @@
     display: none;
   }
 }
-
+.hidden {
+  display: none;
+}
 @media (max-width: 640px) {
   .up-down-arrow {
     display: inline-block;

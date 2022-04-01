@@ -7,6 +7,7 @@ import { lineAreaChart } from './data';
   styleUrls: ['./currenct-details.component.scss'],
 })
 export class CurrenctDetailsComponent implements OnInit {
+  currentPage = false;
   lineAreaChart = lineAreaChart;
 
   constructor() {}

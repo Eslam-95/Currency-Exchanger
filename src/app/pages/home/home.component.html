@@ -4,7 +4,7 @@
       <h1 class="title-size">Currency Exchanger</h1>
     </div>
   </div>
-  <app-converter-panel></app-converter-panel>
+  <app-converter-panel [isHome]="currentPage"></app-converter-panel>
   <div class="row">
     <div class="col-md-4 my-3" *ngFor="let courrency of mostPopularCurrencies">
       <div class="card popular-currency">

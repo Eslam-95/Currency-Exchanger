@@ -9,7 +9,7 @@
       </button>
     </div>
   </div>
-  <app-converter-panel></app-converter-panel>
+  <app-converter-panel [isHome]="currentPage"></app-converter-panel>
   <div class="row">
     <div class="col-12 my-5">
       <div class="chartjs-chart" *ngIf="lineAreaChart?.datasets[0]?.data">

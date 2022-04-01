@@ -15,4 +15,9 @@
   .collapse {
     margin-top: 20px;
   }
+  .navbar {
+    position: relative;
+    top: unset;
+    z-index: unset;
+  }
 }

@@ -51,7 +51,7 @@
                 value=""
               />
             </div>
-            <div class="col-md-8 my-2">
+            <div class="col my-2">
               <input
                 type="text"
                 readonly
@@ -59,15 +59,15 @@
                 placeholder="XX USD"
               />
             </div>
-          </div>
-          <div class="col-md-4 m-auto mt-3" [ngClass]="{ hidden: !isHome }">
-            <button
-              class="btn btn-primary w-100"
-              type="button"
-              [routerLink]="['/details/demo']"
-            >
-              More Details
-            </button>
+            <div class="col-md-4 m-auto" [ngClass]="{ hidden: !isHome }">
+              <button
+                class="btn btn-primary w-100"
+                type="button"
+                [routerLink]="['/details/demo']"
+              >
+                More Details
+              </button>
+            </div>
           </div>
         </form>
       </div>

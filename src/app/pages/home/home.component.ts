@@ -12,17 +12,13 @@ export class HomeComponent implements OnInit {
   requestedAmount = 1;
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.mostPopularCurrencies);
-  }
+  ngOnInit(): void {}
 
   topNineCurrencies(data: any): void {
     this.mostPopularCurrencies.push(...[data]);
-    console.log(this.mostPopularCurrencies);
   }
   getConvertedValue(convertedValue: number): void {
     this.convertedValue = convertedValue;
-    console.log(this.convertedValue);
   }
   getRequestedAmount(requestedValue: number): void {
     this.requestedAmount = requestedValue;

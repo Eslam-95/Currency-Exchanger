@@ -4,12 +4,25 @@
       <h1 class="title-size">EUR - European Union Euro</h1>
     </div>
     <div class="col-sm-4 text-end">
-      <button class="btn btn-primary w-50" [routerLink]="['/']">
+      <button
+        class="btn btn-primary w-50"
+        [routerLink]="['/']"
+        [queryParams]="{
+          from: convertedFromCurrency,
+          to: convertedToCurrency,
+          amount: requestedAmount
+        }"
+      >
         Back to Home
       </button>
     </div>
   </div>
-  <app-converter-panel [isHome]="currentPage"></app-converter-panel>
+  <app-converter-panel
+    [isHome]="currentPage"
+    (requestedValue)="getRequestedAmount($event)"
+    (convertedToCurrency)="getConvertedToCurrency($event)"
+    (convertedFromCurrency)="getconvertedFromCurrency($event)"
+  ></app-converter-panel>
   <div class="row">
     <div class="col-12 my-5">
       <div class="chartjs-chart" *ngIf="lineAreaChart?.datasets[0]?.data">

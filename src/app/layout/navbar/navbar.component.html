@@ -23,7 +23,7 @@
           class="btn btn-outline-light me-2"
           type="button"
           [routerLink]="['/details']"
-          [queryParams]="{ from: 'EUR', to: 'USD' }"
+          [queryParams]="{ from: 'EUR', to: 'USD', amount: enteredAmount }"
         >
           EUR-USD Details
         </button>
@@ -31,7 +31,11 @@
           class="btn btn-outline-light"
           type="button"
           [routerLink]="['/details']"
-          [queryParams]="{ from: 'EUR', to: 'GBP' }"
+          [queryParams]="{
+            from: 'EUR',
+            to: 'GBP',
+            amount: enteredAmount
+          }"
         >
           EUR-GBP Details
         </button>

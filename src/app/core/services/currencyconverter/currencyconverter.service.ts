@@ -1,6 +1,6 @@
-import { ConvertedCurrency } from './../models/convertCurrency';
-import { Symbols } from './../models/symbols';
-import { environment } from './../../../environments/environment';
+import { environment } from './../../../../environments/environment.prod';
+import { ConvertedCurrency } from '../../models/convertCurrency';
+import { Symbols } from '../../models/symbols';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class CurrencyconverterService {
   private API_URL = environment.API_URL;
-  private accessKey = 'e063bcecb070f8c3d9f479a554a9cbee';
+  private accessKey = 'f4a2b5065ac986f721f0b1993f2e6e39';
   constructor(private http: HttpClient) {}
 
   getAllSybmols(): Observable<Symbols> {
@@ -18,19 +18,6 @@ export class CurrencyconverterService {
       params: { access_key: `${this.accessKey}` },
     });
   }
-
-  // The current subscription plan does not support this API endpoint.
-  // convertCurrency(body: {
-  //   access_key: string;
-  //   to: string;
-  //   from: string;
-  //   amount: string;
-  // }): Observable<ConvertedCurrency> {
-  //   body.access_key = this.accessKey;
-  //   return this.http.get<ConvertedCurrency>(`${this.API_URL}convert`, {
-  //     params: body,
-  //   });
-  // }
 
   convertCurrency(): Observable<ConvertedCurrency> {
     return this.http.get<ConvertedCurrency>(`${this.API_URL}latest`, {

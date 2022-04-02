@@ -79,8 +79,12 @@ const lineAreaChart: ChartType = {
         {
           ticks: {
             max: 100,
-            min: 10,
+            beginAtZero: true,
             stepSize: 10,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Date',
           },
           gridLines: {
             color: 'white',

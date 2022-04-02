@@ -18,14 +18,14 @@ export class ConverterPanelComponent implements OnInit {
   isHome!: boolean;
   converterForm!: FormGroup;
   allSymbols!: any;
-  result: any;
+  result = 'Result';
   oneBasedOnSelected: any;
   @Output() topCurrencies = new EventEmitter<any>();
   @Output() convertedValue = new EventEmitter<number>();
   @Output() requestedValue = new EventEmitter<number>();
   @Output() convertedToCurrency = new EventEmitter<string>();
   @Output() convertedFromCurrency = new EventEmitter<string>();
-
+  @Output() currentTitle = new EventEmitter<string>();
   constructor(
     private currencyService: CurrencyconverterService,
     private enteredAmount: EnteredAmountService,
@@ -34,14 +34,14 @@ export class ConverterPanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.getAllSybmols();
+    this.getDefaultBaseCurrency();
     this.getQueryParams();
   }
 
   private getQueryParams(): void {
     this.route.queryParamMap.subscribe((qParams) => {
       const filters: ConverterModel = {
-        amount: '1',
+        amount: '',
         to: 'USD',
         from: 'EUR',
       };
@@ -52,14 +52,17 @@ export class ConverterPanelComponent implements OnInit {
         }
       });
       this.converterForm.setValue(filters);
-      this.submit();
+      this.getAllSybmols();
+      if (this.converterForm.valid) {
+        this.submit();
+      }
     });
   }
 
   // initializing Converter Form
   initForm(): void {
     this.converterForm = new FormGroup({
-      amount: new FormControl('1', [
+      amount: new FormControl('', [
         Validators.required,
         Validators.pattern(/^\d*\.?\d*$/),
         Validators.min(1),
@@ -108,6 +111,12 @@ export class ConverterPanelComponent implements OnInit {
       .pipe(take(1))
       .subscribe((res: Symbols) => {
         this.allSymbols = res.symbols;
+        const fullTitle: any = Object.entries(this.allSymbols).find(
+          (title) => title[0] === this.converterForm.controls.from.value
+        );
+        this.currentTitle.emit(
+          this.converterForm.controls.from.value + ' - ' + fullTitle?.[1]
+        );
       });
   }
 
@@ -117,6 +126,22 @@ export class ConverterPanelComponent implements OnInit {
         this.topCurrencies.emit(currency);
       }
     });
+  }
+
+  getDefaultBaseCurrency(): void {
+    this.currencyService
+      .getDefaultCurrency('USD')
+      .pipe(take(1))
+      .subscribe((res: ConvertedCurrency) => {
+        this.oneBasedOnSelected =
+          1 +
+          ' ' +
+          res.base +
+          ' ' +
+          Object.values(res.rates)[0] +
+          ' ' +
+          Object.keys(res.rates)[0];
+      });
   }
 
   // submit form and convert amount value
@@ -135,14 +160,6 @@ export class ConverterPanelComponent implements OnInit {
           );
           const toBasedOnFrom: number = toBasedOnEUR?.[1] / fromBasedOnEUR?.[1];
 
-          this.oneBasedOnSelected =
-            1 +
-            ' ' +
-            this.converterForm.controls.from.value +
-            ' ' +
-            toBasedOnFrom +
-            ' ' +
-            this.converterForm.controls.to.value;
           this.result =
             toBasedOnFrom * this.converterForm.controls.amount.value +
             ' ' +

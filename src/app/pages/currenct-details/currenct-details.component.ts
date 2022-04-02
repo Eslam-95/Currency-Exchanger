@@ -14,11 +14,16 @@ export class CurrenctDetailsComponent implements OnInit {
 
   convertedFromCurrency!: string;
   convertedToCurrency!: string;
-  requestedAmount = 1;
+  requestedAmount!: number;
+  currentTitle!: string;
+
   constructor(private historicalSerivce: HistoricalRatesService) {}
 
   ngOnInit(): void {}
 
+  getPageTitle(title: string): void {
+    this.currentTitle = title;
+  }
   getLastYearAndMonth(): void {
     const lastyear = new Date().getFullYear() - 1;
     for (let i = 0; i < 12; i++) {

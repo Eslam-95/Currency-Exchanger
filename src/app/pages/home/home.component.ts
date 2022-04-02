@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   currentPage = true;
   mostPopularCurrencies: string[] = [];
-  convertedValue = 1;
-  requestedAmount = 1;
+  convertedValue!: number;
+  requestedAmount!: number;
   constructor() {}
 
   ngOnInit(): void {}

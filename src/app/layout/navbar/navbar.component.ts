@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  enteredAmount = 1;
+  enteredAmount!: number;
   constructor(private currentAmount: EnteredAmountService) {}
 
   ngOnInit(): void {

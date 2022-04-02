@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class EnteredAmountService {
-  enteredAmount: BehaviorSubject<number> = new BehaviorSubject(1);
+  enteredAmount: BehaviorSubject<number> = new BehaviorSubject(0);
 
   constructor() {}
 }

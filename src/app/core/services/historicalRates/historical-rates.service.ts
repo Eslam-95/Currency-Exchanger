@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class HistoricalRatesService {
   private API_URL = environment.API_URL;
-  private accessKey = 'b22efe41c0d9a9be64e2b53be90f829f';
+  private accessKey = '8ee7887556fcb7a18a2c3a2a30ef576d';
   constructor(private http: HttpClient) {}
 
   getHistoricalRate(

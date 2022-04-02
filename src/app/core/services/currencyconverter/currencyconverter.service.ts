@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class CurrencyconverterService {
   private API_URL = environment.API_URL;
-  private accessKey = 'b22efe41c0d9a9be64e2b53be90f829f';
+  private accessKey = '8ee7887556fcb7a18a2c3a2a30ef576d';
   constructor(private http: HttpClient) {}
 
   getAllSybmols(): Observable<Symbols> {
@@ -19,7 +19,13 @@ export class CurrencyconverterService {
     });
   }
 
-  convertCurrency(): Observable<ConvertedCurrency> {
+  getDefaultCurrency(symbol: string): Observable<any> {
+    return this.http.get<ConvertedCurrency>(`${this.API_URL}latest`, {
+      params: { access_key: `${this.accessKey}`, symbols: symbol },
+    });
+  }
+
+  convertCurrency(): Observable<any> {
     return this.http.get<ConvertedCurrency>(`${this.API_URL}latest`, {
       params: { access_key: `${this.accessKey}` },
     });

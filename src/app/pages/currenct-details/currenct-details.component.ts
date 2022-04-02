@@ -56,10 +56,6 @@ export class CurrenctDetailsComponent implements OnInit {
       .subscribe((rate: HistoricalRate) => {
         this.lineAreaChart.datasets[0].data.push(Object.values(rate.rates)[0]);
         this.lineAreaChart.datasets[1].data.push(Object.values(rate.rates)[1]);
-        console.log(
-          this.lineAreaChart.datasets[0].data,
-          this.lineAreaChart.datasets[1].data
-        );
       });
   }
 }

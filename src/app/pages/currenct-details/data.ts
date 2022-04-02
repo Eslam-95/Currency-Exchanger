@@ -17,7 +17,7 @@ const lineAreaChart: ChartType = {
 
   datasets: [
     {
-      label: 'To',
+      label: 'From',
       fill: true,
       lineTension: 0.5,
       backgroundColor: 'rgba(85, 110, 230, 0.2)',
@@ -38,7 +38,7 @@ const lineAreaChart: ChartType = {
       data: [],
     },
     {
-      label: 'From',
+      label: 'To',
       fill: true,
       lineTension: 0.5,
       backgroundColor: 'rgba(235, 239, 242, 0.2)',
@@ -81,10 +81,6 @@ const lineAreaChart: ChartType = {
             max: 100,
             beginAtZero: true,
             stepSize: 10,
-          },
-          scaleLabel: {
-            display: true,
-            labelString: 'Date',
           },
           gridLines: {
             color: 'white',

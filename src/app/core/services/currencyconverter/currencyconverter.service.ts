@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class CurrencyconverterService {
   private API_URL = environment.API_URL;
-  private accessKey = 'f4a2b5065ac986f721f0b1993f2e6e39';
+  private accessKey = 'b22efe41c0d9a9be64e2b53be90f829f';
   constructor(private http: HttpClient) {}
 
   getAllSybmols(): Observable<Symbols> {

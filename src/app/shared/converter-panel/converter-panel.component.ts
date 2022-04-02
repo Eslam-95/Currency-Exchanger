@@ -76,7 +76,6 @@ export class ConverterPanelComponent implements OnInit {
     this.enteredAmount.enteredAmount.subscribe((enteredAmount: number) => {
       this.converterForm.controls.amount.setValue(enteredAmount);
     });
-    this.submit();
   }
 
   // enable disable select box depends on place and validation

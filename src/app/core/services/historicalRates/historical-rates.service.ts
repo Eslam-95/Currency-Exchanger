@@ -12,11 +12,7 @@ export class HistoricalRatesService {
   private accessKey = '8ee7887556fcb7a18a2c3a2a30ef576d';
   constructor(private http: HttpClient) {}
 
-  getHistoricalRate(
-    date: string,
-    from: string,
-    to: string
-  ): Observable<HistoricalRate> {
+  getHistoricalRate(date: string, from: string, to: string): Observable<any> {
     return this.http.get<HistoricalRate>(`${this.API_URL}${date}`, {
       params: { access_key: `${this.accessKey}`, symbols: from + ',' + to },
     });

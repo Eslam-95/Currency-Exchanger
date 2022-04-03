@@ -58,7 +58,9 @@ export class CurrenctDetailsComponent implements OnInit {
         this.convertedToCurrency
       )
       .subscribe((rate: HistoricalRate) => {
-        this.lineAreaChart.datasets[0].data.push(Object.values(rate.rates)[0]);
+        this.lineAreaChart.datasets[0].data.push(
+          Object.values(rate.rates)[0] / Object.values(rate.rates)[1]
+        );
         this.lineAreaChart.datasets[1].data.push(
           Object.values(rate.rates)[1] / Object.values(rate.rates)[0]
         );

@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   topNineCurrencies(data: any): void {
-    this.mostPopularCurrencies.push(...[data]);
+    this.mostPopularCurrencies = data;
   }
   getConvertedValue(convertedValue: number): void {
     this.convertedValue = convertedValue;

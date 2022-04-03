@@ -121,11 +121,13 @@ export class ConverterPanelComponent implements OnInit {
   }
 
   getTopTenCurrencies(topCurrencies: object): void {
+    const currencies: object[] = [];
     Object.entries(topCurrencies).forEach((currency, index: number) => {
       if (index <= 8) {
-        this.topCurrencies.emit(currency);
+        currencies.push(currency);
       }
     });
+    this.topCurrencies.emit(currencies);
   }
 
   getDefaultBaseCurrency(): void {

@@ -19,8 +19,8 @@ export class ConverterPanelComponent implements OnInit {
   converterForm!: FormGroup;
   allSymbols!: any;
   result = 'Result';
-  oneBasedOnSelected: any;
-  @Output() topCurrencies = new EventEmitter<any>();
+  oneBasedOnSelected!: string;
+  @Output() topCurrencies = new EventEmitter<object>();
   @Output() convertedValue = new EventEmitter<number>();
   @Output() requestedValue = new EventEmitter<number>();
   @Output() convertedToCurrency = new EventEmitter<string>();
